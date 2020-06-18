@@ -1,5 +1,16 @@
-// {
-//   "rules":{
-//     "jsx-a11y/anchor-is-valid":"off"
-//   }
-// }
+{
+  "parserOptions": {
+    "ecmaVersion": 7,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "rules":{
+    "jsx-a11y/anchor-is-valid":"off"
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ]
+}
