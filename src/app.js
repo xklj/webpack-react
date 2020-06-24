@@ -1,14 +1,16 @@
 import React from 'react';
-import './app.less';
-// import svg from './assets/img/报表.svg';
+import { Router, Route, Switch, Redirect } from 'react-router';
+import { createBrowserHistory } from 'history';
+import Login from './pages/login/index.jsx'
+
+const newHistory = createBrowserHistory();
 
 
-function App() {
-  return (
-    <div className="App">
-      1
-    </div>
-  );
-}
+const App = () => (
+  <Router history={newHistory}>
+    <Redirect from='/' to='/login' />
+    <Route path="/login" component={Login}></Route>
+  </Router>
+)
 
 export default App;

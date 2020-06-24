@@ -1,6 +1,12 @@
 const path = require('path');
 
 module.exports = {
+  resolve: {
+    extensions: ['.js', '.jsx', '.json'],
+    alias: {
+      '@': path.resolve(__dirname, 'src')
+    }
+  },
   entry: {
     index:"./src/index.js",
     framework: ['react','react-dom'],

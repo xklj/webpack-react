@@ -10,7 +10,12 @@
     "jsx-a11y/anchor-is-valid":"off"
   },
   "extends": [
-    "eslint:recommended",
+    // "eslint:recommended",
     "plugin:react/recommended"
-  ]
+  ],
+  "globals": { 
+    "localStorage": true,
+    "window" : true,
+    "document": true
+  }
 }
