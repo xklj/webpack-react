@@ -1,18 +1,22 @@
-import React, { Component } from 'react';
-import { Router, Route, Switch, Redirect, Link } from 'react-router';
+import React, { lazy } from "react";
+import Login from '../pages/login/index.js';
 import Demo1 from '../pages/function/demo1/index.jsx';
 
 
-
-class Main extends Component {
-  render() {
-    return (
-      <div>
-        <Link to="/demo1">demo1</Link>
-        <Route exact path="/demo1" component={Demo1}/>
-      </div>
-    )
+const routerConfig = [
+  { path: "/", exact: true, redirect: "/login" },
+  {
+    path: '/login',
+    name: '登录',
+    exact: true,
+    component: Login
+  },
+  {
+    path: '/demo1',
+    name: 'demo1',
+    exact: true,
+    component: Demo1
   }
-}
+]
 
-export default Main;
+export default routerConfig;
