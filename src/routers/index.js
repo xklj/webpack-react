@@ -1,10 +1,10 @@
 import React, { lazy } from "react";
 import Login from '../pages/login/index.js';
 import Demo1 from '../pages/function/demo1/index.jsx';
+import { withRouter } from 'react-router-dom';
 
 
 const routerConfig = [
-  { path: "/", exact: true, redirect: "/login" },
   {
     path: '/login',
     name: '登录',
@@ -16,7 +16,8 @@ const routerConfig = [
     name: 'demo1',
     exact: true,
     component: Demo1
-  }
+  },
+  { path: "/", exact: true, redirect: "/login" },
 ]
 
 export default routerConfig;

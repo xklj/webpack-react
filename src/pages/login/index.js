@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Col, Form, Input, Button } from 'antd';
 import styles from './index.less';
-import history from '../../history'
+import history from '../../utils/history'
 
 
 
