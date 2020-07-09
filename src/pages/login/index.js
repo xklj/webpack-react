@@ -43,7 +43,7 @@ class Login extends Component {
             <Input.Password />
           </Form.Item>
         </Form>
-        <Button onClick={() => {
+        <Button type="primary" onClick={() => {
           history.push('./demo1')
         }}>demo1</Button>
       </div>

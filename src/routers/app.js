@@ -23,7 +23,7 @@ const renderRoutes = routes => {
     <Switch>
       {routes.map((route, index) => {
         if (route.redirect) {
-          console.log(Redirect)
+        
           return (
             <Redirect
               key={route.path || index}

@@ -22,11 +22,18 @@ module.exports = merge(base, {
       },
       {
         test: /\.less$/,
+        exclude: /node_modules/,
         use: [
           'style-loader',
           'css-loader',
           'postcss-loader',
-          'less-loader'
+          {
+            loader: 'less-loader',
+            options: {
+              modules: true,
+              localIndetName:"[name]__[local]___[hash:base64:5]"
+            }
+          }
         ]
       },
       {
