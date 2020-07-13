@@ -31,15 +31,6 @@ module.exports = merge(base, {
           'less-loader'
         ]
       },
-      {
-        test: /\.(scss|sass)$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-          'postcss-loader',
-          'sass-loader'
-        ]
-      },
     ]
   },
   optimization: {
