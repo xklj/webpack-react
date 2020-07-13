@@ -70,6 +70,7 @@ module.exports = merge(base, {
     compress: true,
     hot: true,
     historyApiFallback: true,
+    clientLogLevel: 'warning',
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -78,5 +79,6 @@ module.exports = merge(base, {
       hash: false
     }),
     new webpack.HotModuleReplacementPlugin()
-  ]
+  ],
+  devtool: 'cheap-module-eval-source-map', 
 });

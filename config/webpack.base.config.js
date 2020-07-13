@@ -1,12 +1,11 @@
 const path = require('path');
 
-const root = path.resolve(__dirname, '../');
 
 module.exports = {
   resolve: {
     extensions: ['.js', '.jsx', '.json'],
     alias: {
-      '@': path.resolve(__dirname, 'src')
+      '@': path.resolve(__dirname,"../src"),
     }
   },
   entry: {
@@ -47,5 +46,4 @@ module.exports = {
       // }
     ]
   },
-  // devtool: 'cheap-module-eval-source-map',
 };
