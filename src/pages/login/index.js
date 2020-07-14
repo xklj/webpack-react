@@ -1,23 +1,34 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Row, Col, Form, Input, Button } from 'antd';
 import styles from './index.less';
 import history from '../../utils/history';
-import ScrollTop from '@/components/ScrollTop/index.jsx';
+
+// const layout = {
+//   labelCol: { span: 3},
+//   wrapperCol: {span: 21}
+// }
 
 
 class Login extends Component {
+
+  componentDidMount() {
+    // fetchData = () => {
+    //   this.props.dispatch({
+
+    //   })
+    // }
+  }
   render () {
     return (
       <div className={styles.loginWrap}>
-        <ScrollTop />
-        <Row>
-          <Col>Job</Col>
+        <Row justify='center'>
+          <Col className={styles.title}>Private</Col>
         </Row>
         <Row justify='center'>
-          <Col span={12}>
+          <Col span={8} className={styles.loginBox}>
             <Form
               name='login'
-              layout='vertical'
               // onFinish={onFinish}
             >
               <Form.Item
@@ -48,7 +59,7 @@ class Login extends Component {
                 <Col>
                   <Button type="primary" onClick={() => {
                     history.push('./demo1')
-                  }}>demo1</Button>
+                  }}>Login</Button>
                 </Col>
               </Row>
             </Form>
@@ -58,4 +69,20 @@ class Login extends Component {
     )
   }
 }
-export default Login;
+
+function mapStateToProps(state) {
+  return {
+    login: state.login
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+
+  return {
+    dispatch
+  }
+}
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Login);

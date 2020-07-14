@@ -1,15 +1,20 @@
-import React, { lazy, Suspense } from "react";
+import React from "react";
 import {
   Router,
   Route,
   Switch,
   Redirect,
-  withRouter,
-  Link
 } from "react-router-dom";
+import { Provider } from 'react-redux';
+import { createStore  } from 'redux';
+import rootReducer from '@/models/reducer';
 import config from "./index.js";
 import history from '../utils/history';
 
+
+
+
+const store = createStore(rootReducer)
 
 
 
@@ -62,7 +67,11 @@ const renderRoutes = routes => {
 };
 
 const AppRouter = () => {
-  return <Router history={history}>{renderRoutes(config)}</Router>;
+  return (
+    <Provider store={store}>
+      <Router history={history}>{renderRoutes(config)}</Router>
+    </Provider>
+  );
 };
 
 export default AppRouter;
