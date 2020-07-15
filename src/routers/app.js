@@ -6,7 +6,6 @@ import {
   Redirect,
 } from "react-router-dom";
 import { Provider } from 'react-redux';
-import { createStore  } from 'redux';
 import rootReducer from '@/models/reducer';
 import config from "./index.js";
 import history from '../utils/history';
@@ -14,7 +13,7 @@ import history from '../utils/history';
 
 
 
-const store = createStore(rootReducer)
+const store = rootReducer;
 
 
 

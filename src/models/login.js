@@ -1,29 +1,25 @@
-import { types } from "node-sass";
+
 
 const initState = {
   data: {}
 }
-// export default {
-//   nameSpace: 'login',
-//   state: initState,
-//   effect: dispatch => ({
-//     // async fetchLogin(payload) {
-//     //   console.log(payload)
-//     //   // dispatch({
-        
-//     //   // })
-//     // }
-//   })
-// }
+export default {
+  namespace: 'login',
+  state: initState,
 
-function login(state = initState,action) {
-  // switch(action.type) {
-  //   case types.fetchLogin: 
-  //    return { data: {a:1}}
+  reducers: {
+    init(state) {
+      return {
+        state: initState
+      }
+    }
+  },
 
-  //   default: return state
-  // }
-  return state;
+  effects: dispatch => ({
+    async fetchLogin(payload) {
+      console.log(payload)
+      this.init(1)
+    }
+  }),
 }
 
-export default login

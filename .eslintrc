@@ -8,9 +8,11 @@
   },
   "rules":{
     "jsx-a11y/anchor-is-valid":"off",
+    "react/prop-types": 0,
     "no-unused-vars": ["error", { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }]
   },
   "extends": [
     "plugin:react/recommended"
-  ]
+  ],
+  "parser": "babel-eslint"
 }

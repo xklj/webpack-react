@@ -4,20 +4,33 @@ import { Row, Col, Form, Input, Button } from 'antd';
 import styles from './index.less';
 import history from '../../utils/history';
 
+
+
 // const layout = {
 //   labelCol: { span: 3},
 //   wrapperCol: {span: 21}
 // }
 
+function mapDispatchToProps(dispatch) {
+  return {
+    dispatch
+  }
+}
+
+function mapStateToProps(state) {
+  return { 
+    login: state.login
+  }
+}
+
 
 class Login extends Component {
 
   componentDidMount() {
-    // fetchData = () => {
-    //   this.props.dispatch({
-
-    //   })
-    // }
+    this.props.dispatch({
+      type: 'login/fetchLogin',
+      payload: {a:1}
+    })
   }
   render () {
     return (
@@ -70,18 +83,9 @@ class Login extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    login: state.login
-  }
-}
 
-function mapDispatchToProps(dispatch) {
 
-  return {
-    dispatch
-  }
-}
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps
