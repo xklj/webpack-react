@@ -1,24 +1,29 @@
 
 
 const initState = {
-  data: {}
+  success: false
 }
 export default {
   namespace: 'login',
   state: initState,
 
   reducers: {
-    init(state) {
+    status(state, payload) {
       return {
-        state: initState
+        ...state,
+        success: payload
       }
     }
   },
 
   effects: dispatch => ({
     async fetchLogin(payload) {
-      console.log(payload)
-      this.init(1)
+      if(payload.username ==='test' && payload.password === 'admin') {
+        dispatch({
+          type: 'login/status',
+          payload: true
+        })
+      }
     }
   }),
 }

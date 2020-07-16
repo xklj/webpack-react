@@ -1,15 +1,10 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Row, Col, Form, Input, Button } from 'antd';
+import history from '@/utils/history';
 import styles from './index.less';
-import history from '../../utils/history';
 
 
-
-// const layout = {
-//   labelCol: { span: 3},
-//   wrapperCol: {span: 21}
-// }
 
 function mapDispatchToProps(dispatch) {
   return {
@@ -24,66 +19,77 @@ function mapStateToProps(state) {
 }
 
 
-class Login extends Component {
 
-  componentDidMount() {
-    this.props.dispatch({
+
+
+const Login = props => {
+  console.log(123213e21)
+  // const [form] = Form.useForm();
+  const [success, setSuccess ] = useState(false);
+
+  const onFinish = value => {
+    props.dispatch({
       type: 'login/fetchLogin',
-      payload: {a:1}
+      payload: value,
+
     })
   }
-  render () {
-    return (
-      <div className={styles.loginWrap}>
-        <Row justify='center'>
-          <Col className={styles.title}>Private</Col>
-        </Row>
-        <Row justify='center'>
-          <Col span={8} className={styles.loginBox}>
-            <Form
-              name='login'
-              // onFinish={onFinish}
+
+  useEffect(() => {
+    setSuccess(props.login.success);
+    if(success) {
+     history.push('/demo1')
+    }
+  })
+
+
+
+  return (
+    <div className={styles.loginWrap}>
+      <Row justify='center'>
+        <Col className={styles.title}>Private</Col>
+      </Row>
+      <Row justify='center'>
+        <Col span={8} className={styles.loginBox}>
+          <Form
+            name='login'
+            onFinish={onFinish}
+          >
+            <Form.Item
+              label='username'
+              name='username'
+              rules={[
+                {
+                  require: true,
+                  message: 'Please input your username!'
+                }
+              ]}
             >
-              <Form.Item
-                label='username'
-                name='username'
-                rules={[
-                  {
-                    require: true,
-                    message: 'Please input your username!'
-                  }
-                ]}
-              >
-                <Input />
-              </Form.Item>
-              <Form.Item
-                label='password'
-                name='password'
-                rules={[
-                  {
-                    require: true,
-                    message: 'Please input your password!'
-                  }
-                ]}
-              >
-                <Input.Password />
-              </Form.Item>
-              <Row justify='center'>
-                <Col>
-                  <Button type="primary" onClick={() => {
-                    history.push('./demo1')
-                  }}>Login</Button>
-                </Col>
-              </Row>
-            </Form>
-          </Col>
-        </Row>
-      </div>
-    )
-  }
+              <Input />
+            </Form.Item>
+            <Form.Item
+              label='password'
+              name='password'
+              rules={[
+                {
+                  require: true,
+                  message: 'Please input your password!'
+                }
+              ]}
+            >
+              <Input.Password />
+            </Form.Item>
+            <Row justify='center'>
+              <Col>
+                <Button type="primary" htmlType='submit'>Login</Button>
+              </Col>
+            </Row>
+          </Form>
+        </Col>
+      </Row>
+    </div>
+  )
 }
-
-
 
 
 export default connect(
