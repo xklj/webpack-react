@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import {
   Router,
   Route,
@@ -21,48 +21,68 @@ const store = rootReducer;
 const renderRoutes = routes => {
   if (!Array.isArray(routes)) {
     return null;
-  }
-
-  return (
-    <Switch>
-      {routes.map((route, index) => {
-        if (route.redirect) {
-        
-          return (
-            <Redirect
-              key={route.path || index}
-              exact={route.exact}
-              strict={route.strict}
-              from={route.path}
-              to={route.redirect}  
-            />
-          );
+  }else {
+    return (
+      <Switch> 
+        {routes.map((item, index) => {
+          if(item.redirect) {
+            return (
+              <Redirect 
+                key={index}
+                exact={item.exact}
+                from={item.path}
+                to={item.redirect}
+              />
+            )
+          }else {
+            return (
+              <Route 
+                key={index}
+                path={item.path}
+                exact={item.exact}
+                render={(props) => {
+                  if(item.childRoutes) {
+                    return (
+                      <Fragment>
+                        <item.component {...props} ></item.component>
+                          <Switch>
+                            {
+                              item.childRoutes.map((childRoute, index) => {
+                                return (
+                                  <Route 
+                                    exact={childRoute.exact}
+                                    path={childRoute.path}
+                                    key={`${index}_${childRoute.path}`}
+                                    component={childRoute.component}
+                                  />
+                                )
+                              })
+                            }
+                          </Switch>
+                      </Fragment>
+                    )
+                  }else {
+                    return (
+                      <Route 
+                        path={item.path}
+                        key={index}
+                        render={(props) => {
+                          return (
+                            <item.component {...props} />
+                          )
+                        }}
+                      />
+                    )
+                  }
+                }}
+              />
+            )
+          }
         }
-
-        return (
-          <Route
-            key={route.path || index}
-            path={route.path}
-            exact={route.exact}
-            strict={route.strict}
-            render={() => {
-              const renderChildRoutes = renderRoutes(route);
-              if (route.component) {
-                return (
-                  // <Suspense fallback={<LoadingPage />}>
-                    <route.component route={route}>
-                      {renderChildRoutes}
-                    </route.component>
-                  // </Suspense>
-                );
-              }
-              return renderChildRoutes;
-            }}
-          />
-        );
-      })}
-    </Switch>
-  );
+        )}
+      </Switch>
+    );
+  }
 };
 
 const AppRouter = () => {

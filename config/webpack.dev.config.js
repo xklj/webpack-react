@@ -11,18 +11,11 @@ module.exports = merge(base, {
   mode: 'development',
   output: {
     filename: 'js/[name].[hash:8].bundle.js',
+    // chunkFilename: 'js/[name].[hash:8].bundle.js',
+    // publicPath: 'dist/'
   },
   module: {
     rules: [
-      // antd不支持css modules
-      // {
-      //   test: /\.css$/,
-      //   use: [ 
-      //     'style-loader',
-      //     'css-loader',
-      //     'postcss-loader',
-      //   ]
-      // },
       {
         test: /\.(css|less)$/,
         exclude: /node_modules/,
