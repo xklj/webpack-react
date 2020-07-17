@@ -12,7 +12,7 @@ module.exports = merge(base, {
   output: {
     filename: 'js/[name].[hash:8].bundle.js',
     // chunkFilename: 'js/[name].[hash:8].bundle.js',
-    // publicPath: 'dist/'
+    // path: path.resolve(__dirname, '../dist')
   },
   module: {
     rules: [

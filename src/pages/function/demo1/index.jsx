@@ -5,7 +5,7 @@ class Demo1 extends Component {
   render () {
     return (
       <div>
-        <Button onClick={() => {history.push('./home')}}>demo1</Button>
+        <Button onClick={() => {history.push('/function/home')}}>demo1</Button>
       </div>
     )
   }

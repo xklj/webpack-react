@@ -1,6 +1,7 @@
 import Login from '../pages/login/index.js';
 import Demo1 from '../pages/function/demo1/index.jsx';
 import Basic from '@/components/basic/index.jsx';
+import Home from '@/pages/home/index.jsx';
 // const routerConfig = [
 //   {
 //     path: '/login',
@@ -18,7 +19,7 @@ import Basic from '@/components/basic/index.jsx';
 // ]
 const routerConfig = [
   {
-    path: '/login/123',
+    path: '/login',
     name: '登录',
     exact: true,
     component: Login
@@ -32,10 +33,16 @@ const routerConfig = [
         name: 'demo1',
         exact: true,
         component: Demo1
+      },
+      {
+        path: '/function/home',
+        name: 'home',
+        exact: true,
+        component: Home
       }
     ]
   },
-  { path: "/", exact: true, redirect: "/function/demo1" },
+  { path: "/", exact: true, redirect: "/login" },
 ]
 
 export default routerConfig;

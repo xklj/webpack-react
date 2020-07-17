@@ -23,7 +23,6 @@ function mapStateToProps(state) {
 
 
 const Login = props => {
-  console.log(123213e21)
   // const [form] = Form.useForm();
   const [success, setSuccess ] = useState(false);
 
@@ -38,7 +37,7 @@ const Login = props => {
   useEffect(() => {
     setSuccess(props.login.success);
     if(success) {
-     history.push('/demo1')
+     history.push('/function/demo1')
     }
   })
 

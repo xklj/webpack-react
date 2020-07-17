@@ -39,7 +39,7 @@ const renderRoutes = routes => {
               <Route 
                 key={index}
                 path={item.path}
-                exact={item.exact}
+                // exact={item.exact}
                 render={(props) => {
                   if(item.childRoutes) {
                     return (
@@ -50,7 +50,7 @@ const renderRoutes = routes => {
                               item.childRoutes.map((childRoute, index) => {
                                 return (
                                   <Route 
-                                    exact={childRoute.exact}
+                                    // exact={childRoute.exact}
                                     path={childRoute.path}
                                     key={`${index}_${childRoute.path}`}
                                     component={childRoute.component}
