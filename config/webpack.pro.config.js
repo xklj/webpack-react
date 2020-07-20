@@ -3,7 +3,7 @@ const base = require('./webpack.base.config.js');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
@@ -11,31 +11,46 @@ module.exports = merge(base, {
   mode: 'production',
   output: {
     filename: 'js/[name].[chunkhash:8].bundle.js',
+    publicPath: '/'
   },
   module: {
     rules: [
       {
-        test: /\.css$/,
-        use: [ 
+        test: /\.(css|less)$/,
+        exclude: /node_modules/,
+        use: [
           MiniCssExtractPlugin.loader,
-          'css-loader',
-          'postcss-loader'
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                mode: 'local',
+                localIdentName: '[local]__[hash:base64:8]'
+              },
+            }
+          },
+          'postcss-loader',
+          'less-loader'
         ]
       },
       {
-        test: /\.less$/,
-        use: [
+        test: /\.(css|less)$/,
+        include: /node_modules/,
+        use: [ 
           MiniCssExtractPlugin.loader,
           'css-loader',
           'postcss-loader',
-          'less-loader'
+          {
+            loader: 'less-loader',
+            options: { javascriptEnabled: true }
+          }
         ]
       },
     ]
   },
   optimization: {
     minimizer: [
-      new UglifyJsPlugin(),
+      new TerserPlugin(),
       new OptimizeCssAssetsPlugin({
         assetNameRegExp:/\.css$/g,
         cssProcessor:require("cssnano"),
