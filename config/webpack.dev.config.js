@@ -11,6 +11,8 @@ module.exports = merge(base, {
   mode: 'development',
   output: {
     filename: 'js/[name].[hash:8].bundle.js',
+    // 处理BrowserHistory二级路由跳转后刷新失效publicPath: '/'
+    publicPath: '/' 
     // chunkFilename: 'js/[name].[hash:8].bundle.js',
     // path: path.resolve(__dirname, '../dist')
   },
@@ -62,6 +64,7 @@ module.exports = merge(base, {
     port: 9000,
     compress: true,
     hot: true,
+    // 处理BrowserHistory二级路由跳转后刷新失效publicPath: '/'
     historyApiFallback: true,
     clientLogLevel: 'warning',
   },
