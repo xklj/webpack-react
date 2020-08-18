@@ -1,6 +1,6 @@
 import Login from '../pages/login/index.js';
 import Demo1 from '../pages/function/demo1/index.jsx';
-import Basic from '@/components/basic/index.jsx';
+import Layout from '@/components/Layout/index.jsx';
 import Home from '@/pages/home/index.jsx';
 // const routerConfig = [
 //   {
@@ -26,7 +26,7 @@ const routerConfig = [
   },
   {
     path: '/function',
-    component: Basic,
+    component: Layout,
     childRoutes: [
       {
         path: '/function/demo1',

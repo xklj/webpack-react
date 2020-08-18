@@ -23,7 +23,6 @@ function mapStateToProps(state) {
 
 
 const Login = props => {
-  // const [form] = Form.useForm();
   const [success, setSuccess ] = useState(false);
 
   const onFinish = value => {

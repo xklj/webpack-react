@@ -16,8 +16,6 @@ import history from '../utils/history';
 const store = rootReducer;
 
 
-
-
 const renderRoutes = routes => {
   if (!Array.isArray(routes)) {
     return null;
@@ -44,7 +42,7 @@ const renderRoutes = routes => {
                   if(item.childRoutes) {
                     return (
                       <Fragment>
-                        <item.component {...props} ></item.component>
+                        <item.component {...props} >
                           <Switch>
                             {
                               item.childRoutes.map((childRoute, index) => {
@@ -59,6 +57,7 @@ const renderRoutes = routes => {
                               })
                             }
                           </Switch>
+                        </item.component>
                       </Fragment>
                     )
                   }else {

@@ -12,10 +12,10 @@ module.exports = {
     index:"./src/index.js",
     framework: ['react','react-dom'],
   },
-  output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, '../dist'),
-  },
+  // output: {
+  //   filename: 'bundle.js',
+  //   path: path.resolve(__dirname, '../dist'),
+  // },
   module: {
     rules: [
       {
@@ -41,7 +41,7 @@ module.exports = {
       //     options: {
       //       name: '[name]_[hash].[ext]',
       //       outputPath: 'font/'
-      //     }
+      //     }-
       //   }
       // }
     ]
